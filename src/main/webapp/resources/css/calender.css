@@ -1,0 +1,92 @@
+/* 달력 */
+.dateHead div {
+    color: #000;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+    margin: 10px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.grid div {
+    cursor: pointer;
+}
+.dateBoard div {
+    width: 80px;
+    height: 80px;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.date:not(.active_01):hover {
+    background-color: rgba(0,20,50,0.1);
+}
+
+.noColor {
+    background: transparent;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    margin-bottom: 20px;
+}
+
+/* 좌우 버튼 */
+.btn {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #000;
+    border-width: 3px 3px 0 0;
+    cursor: pointer;
+}
+
+.prevDay {
+    transform: rotate(-135deg);
+}
+
+.nextDay {
+    transform: rotate(45deg);
+}
+
+/* ---- */
+
+
+
+
+.rap {
+    width: 700px;
+    background-color: #fff;
+    border-radius: 1.5em;
+    user-select: none;
+    box-shadow:
+        0 0.0625em 0.25em rgba(0,20,50,0.2),
+        0 0.5em 0.5em 0.125em rgba(0,20,50,0.1);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.active_calender {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
