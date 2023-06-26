@@ -206,18 +206,16 @@ section {
     justify-content: space-between;
     align-items: center;
 }
-.search_icon i {
-    width: 40px;
-    height: 100%;
-    display: flex;
+.searchBtn {
+	width: 40px;
+    height: 40px;
+	background-color: gold;
+	display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10%;
     font-weight: 900;
     font-size: 18px;
-}
-.bi-search {
-    background-color: gold;
 }
 .bi-arrow-clockwise {
     background-color: red;

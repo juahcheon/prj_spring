@@ -122,6 +122,12 @@ $(function(){
     })
         
     
+    $(".searchBtn").on("click", function(){
+		console.log("바보");
+		$(".section_search").attr("action", "/codeGroupList").submit();
+		
+	});
+    
 
 
 })

@@ -12,11 +12,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-
-    <!-- CSS 연결 -->
-    <link rel="stylesheet" href="../../resources/css/DB_Tool.css">
-    
-
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -24,6 +19,10 @@
     <!-- 달력 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- CSS 연결 -->
+    <link rel="stylesheet" href="../../resources/css/DB_Tool.css?after">
+    
 
 </head>
 <body>
@@ -119,7 +118,7 @@
 
     <!-- 고정 끝 -->
     
-            <div class="section_search">
+            <form class="section_search" name="formList">
                 <div class="search_wrap">
                     <select class="form-select search" aria-label="Default select example">
                         <option selected>N</option>
@@ -146,14 +145,16 @@
                         <option value="3">100</option>
                     </select>
                     <div class="search">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control search_bar">
                     </div>
                     <div class="search_icon">
-                        <i class="bi bi-search"></i>
+                        <button type="button" class="searchBtn">
+                        	<i class="bi bi-search"></i>
+                        </button>
                         <i class="bi bi-arrow-clockwise"></i>
                     </div>
                 </div>
-            </div>
+            </form>
 
             <div class="section_wrap">
                 <p class="total">Total: </p>
