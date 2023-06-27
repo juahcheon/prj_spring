@@ -2,34 +2,52 @@ package com.mycompany.app.codegroup;
 
 public class CodeGroupVo {
 
-	private Integer shOption;
-	private String shKeyword;
-	private String seq;
-	
-	public String getSeq() {
-		return seq;
-	}
+    private String name;
+    private String type;
 
-	public void setSeq(String seq) {
-		this.seq = seq;
-	}
+    private String seq;
 
-	public Integer getShOption() {
-		return shOption;
-	}
-	
-	public String getShKeyword() {
-		return shKeyword;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setShKeyword(String shKeyword) {
-		this.shKeyword = shKeyword;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setShOption(Integer shOption) {
-		
-	}
-	
-	
-	
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getSeq() {
+        return seq;
+    }
+
+    public void setSeq(String seq) {
+        this.seq = seq;
+    }
+
+    private String shKeyword;
+
+    public Integer getShOption() {
+        return shOption;
+    }
+
+    public void setShOption(Integer shOption) {
+        this.shOption = shOption;
+    }
+
+    private Integer shOption;
+
+    public String getShKeyword() {
+        return shKeyword;
+    }
+
+    public void setShKeyword(String shKeyword) {
+        this.shKeyword = shKeyword;
+    }
 }
