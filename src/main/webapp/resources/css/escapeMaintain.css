@@ -1,0 +1,206 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+a {text-decoration: none;}
+ul {list-style: none;}
+body {font-family: 'NanumSquareNeo';}
+body, html {height: 100%;}
+
+
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.lnb {
+    width: 15%;
+    height: 100%;
+    background-color: #444d52;
+}
+.logo {
+    width: 100%;
+    height: 15%;
+    background-color: #B1D0E0;
+}
+.logo h1 {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.refresh_btn {
+    width: 100%;
+    height: 30px;
+    text-align: right;
+    background-color: transparent;
+    padding: 0 15px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,.1);
+    cursor: pointer;
+}
+.lnb_main {
+    width: 100%;
+    height: 85%;
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+.main_list_mt>li {
+    margin-bottom: 30px;
+}
+.sub_list_mt>p {
+    margin-bottom: 10px;
+    padding: 0 30px;
+    font-size: 12px;
+}
+.sub_list_mt>li {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+}
+.sub_list_mt a {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+.sub_list_mt a:hover {
+    background-color: rgba(255,255,255,.1);
+}
+
+.content {
+    width: 85%;
+    height: 90%;
+}
+.header {
+    width: 100%;
+    height: 10%;
+    background-color: #444d52;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+/* 체험한 테마 */
+.didtheme {
+    width: 95%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: auto;
+}
+.didtheme .inner {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+.did_title {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.did_title h4 {
+    font-size: 24px;
+    margin-right: 10px;
+}
+.notice_did {
+    width: 40px;
+    height: 30px;
+    border-radius: 30%;
+    background-color: #6998AB;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.board_list {
+    font-size: 0;
+}
+.board_list i {
+    font-size: 14px;
+    margin-top: 1px;
+}
+.board_list button {
+    background-color: transparent;
+    font-family: 'NanumSquareNeo';
+    vertical-align: top;
+    cursor: pointer;
+}
+.board_list button:first-of-type::after {
+    content: "|";
+    margin: 5px;
+}
+.board_list button:last-of-type {
+    margin-right: 10px;
+}
+.title_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.did_theme_table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+.did_theme_table thead {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+}
+.did_theme_table tbody {
+    width: 100%;
+    height: 50px;
+}
+.did_theme_table tbody tr td:not(:nth-of-type(3)) {
+    text-align: center;
+}
+.did_theme_table td {
+    border-bottom: 1px solid black;
+}
+
+.add_btn {
+    width: 50px;
+    height: 40px;
+    background-color: #eee;
+    border: 0;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    border-radius: 10px;
+    font-family: 'NanumSquareNeoBold';
+    cursor: pointer;
+}
+.add_btn:hover {
+    color: #F1F6F9;
+    background-color: #6998AB;
+}
+.search_input {
+	width: 200px;
+	height: 40px;
+	outline: 1px solid #aaa;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-right: 15px;
+	border-radius: 10px;
+}
+.search_btn {
+	width: 50px;
+	height: 30px;
+	background-color: #B1D0E0;
+	border-radius: 10px;
+	cursor: pointer;
+}

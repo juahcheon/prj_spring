@@ -8,7 +8,6 @@
 <form name="subForm">
     <input name="seq" id="seq" value="<c:out value="${item.seq}"/>" /><br>
     <input placeholder="name" name="name" id="name" value="<c:out value="${item.name}"/>"/>
-    <input placeholder="type" name="type" id="type" value="<c:out value="${item.type}"/>"/>
     <button id="saveBtn">Save</button>
     <button id="makeBtn">Create</button>
     <button  id="delBtn">Delete</button>
@@ -18,7 +17,7 @@
 <br>
 <button  id="btn2">Search</button>
 
-<script src="/resources/js/jquery-3.6.4.min.js"></script>
+<script src="/resources/js/jquery-3.7.0.slim.min.js"></script>
 <script type="text/javascript">
     $("#saveBtn").on("click",function(){
         // 자기 자신을 호출할 때

@@ -7,19 +7,25 @@
  해서 관계적으로 해당 파일의 path와 file_name(확장자 제외)
  그리고 dao 에서 namespace와 일치하여야 된다. -->
 
-<mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">
+<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">
 
 
 
     <!--select 결과를 받을 객채-->
-    <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
+
+	<sql id="abc">
+		seq
+		, name
+	</sql>
 
     <select id="selectList" resultMap ="resultMapObj">
         SELECT
-            seq,
-            name
+            <include refid="abc" />
         FROM
             codeGroup
+        WHERE 1=1
+        	<if test="shKeyword != null and !shKeyword.equals('')"> AND name LIKE CONCAT(%, #{shKeyword} ,%)</if>
     </select>
 
     <select id="selectOne" resultMap ="resultMapObj">
@@ -45,9 +51,8 @@
     </delete>
 
     <insert id="insert">
-        INSERT INTO codeGroup (seq,name)
+        INSERT INTO codeGroup (name)
         VALUES(
-            #{seq},
             #{name}
             )
     </insert>

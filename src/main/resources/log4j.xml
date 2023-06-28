@@ -54,8 +54,8 @@
 	
 	<logger name="jdbc.resultsettable" additivity="false">
 		<!-- <level value="info"/> -->
-		<level value="warn"/>
-		<appender-ref ref="console"/>
+		<level value="warn"/> 
+ 		<appender-ref ref="console"/>
 	</logger>
 	<!-- query log e 2022.02.26 -->
 	

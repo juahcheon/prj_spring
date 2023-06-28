@@ -1,4 +1,4 @@
-package com.mycompany.app.codegroup;
+package com.mycompany.app.infra.codegroup;
 
 public class CodeGroup {
 //	db_column명 첫글자는 소문자

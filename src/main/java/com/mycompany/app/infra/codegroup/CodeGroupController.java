@@ -1,4 +1,4 @@
-package com.mycompany.app.codegroup;
+package com.mycompany.app.infra.codegroup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class CodeGroupController {
 //        model.addAttribute("list", service.selectList());
 
 
-        return "codeGroupList";
+        return "admin/infra/codegroup/codeGroupList";
     }
 
     @RequestMapping("/codeGroupForm")
@@ -34,12 +34,11 @@ public class CodeGroupController {
 
         model.addAttribute("item",codeGroup);
 
-        return "codeGroupForm";
+        return "admin/infra/codegroup/codeGroupForm";
     }
 
     @RequestMapping("/codeGroupUpdt")
     public String codeGroupUpdt(CodeGroup dto){
-        System.out.println("heyheyhey");
         service.update(dto);
         return "redirect:/codeGroupList";
     }
