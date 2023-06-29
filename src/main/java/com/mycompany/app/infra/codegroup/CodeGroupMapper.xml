@@ -17,21 +17,21 @@
 	<sql id="abc">
 		seq
 		, name
+		, theme
 	</sql>
 
     <select id="selectList" resultMap ="resultMapObj">
         SELECT
-            <include refid="abc" />
+            <!-- <include refid="abc" /> --> *
         FROM
             codeGroup
         WHERE 1=1
-        	<if test="shKeyword != null and !shKeyword.equals('')"> AND name LIKE CONCAT(%, #{shKeyword} ,%)</if>
+        	<if test="shKeyword != null and !shKeyword.equals('')"> AND name LIKE CONCAT('%', #{shKeyword} ,'%')</if>
     </select>
 
     <select id="selectOne" resultMap ="resultMapObj">
         SELECT
-            seq,
-            name
+            *
         FROM
             codeGroup
         WHERE
@@ -42,6 +42,7 @@
         UPDATE codeGroup
         SET
             name = #{name}
+            , theme = #{theme}
         WHERE
             seq = #{seq}
     </update>
@@ -51,10 +52,13 @@
     </delete>
 
     <insert id="insert">
-        INSERT INTO codeGroup (name)
-        VALUES(
+        INSERT INTO codeGroup (
+        	name
+        	, theme
+        ) VALUES (
             #{name}
-            )
+            , #{theme}
+        )
     </insert>
 
 </mapper>

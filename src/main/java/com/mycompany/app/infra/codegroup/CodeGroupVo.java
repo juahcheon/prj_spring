@@ -4,7 +4,6 @@ public class CodeGroupVo {
 
     private String name;
     private String type;
-
     private String seq;
 
     public String getName() {

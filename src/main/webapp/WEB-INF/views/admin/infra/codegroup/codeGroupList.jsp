@@ -52,7 +52,6 @@
     <c:otherwise>
         <c:forEach items="${list}" var="list" varStatus="status">
             <c:out value="${list.seq}"></c:out>
-            <c:out value="${list.type}"></c:out><br>
             <a href="/codeGroupForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.name}"></c:out></a><br>
 
         </c:forEach>

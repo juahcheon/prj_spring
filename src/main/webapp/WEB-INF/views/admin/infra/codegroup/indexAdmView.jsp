@@ -66,52 +66,61 @@
                         <div class="did_title">
                             <h4>등록 테마</h4>
                         </div>
-                        <div>
-                        	<input type="text" class="search_input" placeholder="검색어를 입력하세요.">
-                        	<button type="button" class="search_btn">검색</button>
-                        </div>
+	                    <div>
+	                      	<input type="text" class="search_input" placeholder="검색어를 입력하세요." name="shKeyword">
+	                        <button type="button" class="search_btn">검색</button>
+	                    </div>
                     </div>
                     
-                    <table class="did_theme_table">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="did_num">No.</th>
-                                <th scope="col" class="did_date">등록 날짜</th>
-                                <th scope="col" class="did_themetitle">제목</th>
-                                <th scope="col" class="did_access">장르</th>
-                                <th scope="col" class="did_hint">설명</th>
-                                <th scope="col" class="did_comm">매장 난이도</th>
-                                <th scope="col">코방 평점</th>
-                                <th scope="col">장소</th>
-                                <th scope="col">지역</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:choose>
-							    <c:when test="${fn:length(list) eq 0}">
-							        <h1 class="text-center" colspan="9">There is no data!</h1>
-							    </c:when>
-							    <c:otherwise>
-							        <c:forEach items="${list}" var="list" varStatus="status">
-							            <tr>
-							                <td ><c:out value="${list.seq}"></c:out></td>
-							                <td><c:out value="${list.code_seq}"></c:out></td>
-							                <td><a href="/codeGroupForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.name}"></c:out></a></td>
-							                <td><c:out value="${list.delNy}"></c:out></td>
-							            </tr>
-							        </c:forEach>
-							    </c:otherwise>
-							</c:choose>
-                        </tbody>
-                    </table>
-                        
-                    <button class="btn add_btn" type="button">추가</button>
-                    
+                    <form name="formList" action="" method="">
+	                    <table class="did_theme_table">
+	                        <thead>
+	                            <tr>
+	                                <th scope="col" class="did_num">No.</th>
+	                                <th scope="col" class="did_date">등록 날짜</th>
+	                                <th scope="col" class="did_themetitle">제목</th>
+	                                <th scope="col" class="did_access">장르</th>
+	                                <th scope="col" class="did_hint">설명</th>
+	                                <th scope="col" class="did_comm">매장 난이도</th>
+	                                <th scope="col">코방 평점</th>
+	                                <th scope="col">장소</th>
+	                                <th scope="col">지역</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody class="indexAdmViewTbody">
+	                            <c:choose>
+								    <c:when test="${fn:length(list) eq 0}"></c:when>
+								    <c:otherwise>
+								        <c:forEach items="${list}" var="list" varStatus="status">
+								            <tr>
+								                <td><c:out value="${list.seq}"></c:out></td>
+								                <td><c:out value="${list.name}"></c:out></td>
+								                <td><a href="/codeGroupAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.theme}"></c:out></a></td>
+								                <td></td>
+								                <td></td>
+								                <td></td>
+								                <td></td>
+								                <td></td>
+								                <td></td>
+								            </tr>
+								        </c:forEach>
+								    </c:otherwise>
+								</c:choose>
+	                        </tbody>
+	                    </table>
+	                    <a href="/codeGroupAdmForm" class="btn add_btn">추가</a>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <script src="/resources/js/escapeFinal.js"></script>
+    <script>
+    	$(".add_btn").on("click", function(){
+    		$("form[name=formList]").attr("action","/indexAdmView");
+    		console.log("dd");
+    	});
+    </script>
 
 </body>
 </html>

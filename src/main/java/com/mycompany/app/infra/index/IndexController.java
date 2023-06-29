@@ -1,11 +1,21 @@
 package com.mycompany.app.infra.index;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.mycompany.app.infra.codegroup.CodeGroup;
+import com.mycompany.app.infra.codegroup.CodeGroupServiceImpl;
+import com.mycompany.app.infra.codegroup.CodeGroupVo;
 
 @Controller
 public class IndexController {
+	
+	@Autowired
+    CodeGroupServiceImpl service;
 
 	@RequestMapping("/biographyUsrView")
 	public String biographyUsrView() {
@@ -24,9 +34,41 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/indexAdmView")
-	public String indexAdmView() {
-		return "admin/infra/index/indexAdmView";
+	public String indexAdmView(CodeGroupVo vo, Model model) {
+		
+		List<CodeGroup> list = service.selectList(vo);
+        model.addAttribute("list", list);
+        
+		return "admin/infra/codegroup/indexAdmView";
 	}
+	
+	@RequestMapping("/codeGroupAdmForm")
+	public String codeGroupAdmForm(CodeGroupVo vo, Model model) {
+		
+		CodeGroup codeGroup = service.selectOne(vo);
+		model.addAttribute("item", codeGroup);
+		
+		return "admin/infra/codegroup/codeGroupAdmForm";
+	}
+	
+	@RequestMapping("/codeGroupUpdt")
+    public String codeGroupUpdt(CodeGroup dto){
+        System.out.println("dto.getTheme(): " + dto.getTheme());
+		
+		service.update(dto);
+        return "redirect:/indexAdmView";
+    }
+
+    @RequestMapping("/codeGroupDelt")
+    public String codeGroupDelt(CodeGroup dto){
+        service.delete(dto);
+        return "redirect:/indexAdmView";
+    }
+    @RequestMapping("/codeGroupNsrt")
+    public String codeGroupNsrt(CodeGroup vo){
+        service.insert(vo);
+        return "redirect:/indexAdmView";
+    }
 	
 	
 	/*

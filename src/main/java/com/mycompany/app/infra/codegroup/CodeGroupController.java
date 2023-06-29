@@ -32,23 +32,23 @@ public class CodeGroupController {
     public String codeGroupForm(CodeGroupVo vo, Model model){
         CodeGroup codeGroup = service.selectOne(vo);
 
-        model.addAttribute("item",codeGroup);
+        model.addAttribute("item", codeGroup);
 
         return "admin/infra/codegroup/codeGroupForm";
     }
 
-    @RequestMapping("/codeGroupUpdt")
+    @RequestMapping("/codeGroupUpdt2")
     public String codeGroupUpdt(CodeGroup dto){
         service.update(dto);
         return "redirect:/codeGroupList";
     }
 
-    @RequestMapping("/codeGroupDelt")
+    @RequestMapping("/codeGroupDelt2")
     public String codeGroupDelt(CodeGroup dto){
         service.delete(dto);
         return "redirect:/codeGroupList";
     }
-    @RequestMapping("/codeGroupNsrt")
+    @RequestMapping("/codeGroupNsrt2")
     public String codeGroupNsrt(CodeGroup vo){
         service.insert(vo);
         return "redirect:/codeGroupList";
