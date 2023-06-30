@@ -21,6 +21,7 @@ body, html {height: 100%;}
     width: 100%;
     height: 15%;
     background-color: #B1D0E0;
+    position: relative;
 }
 .logo h1 {
     width: 100%;
@@ -38,12 +39,16 @@ body, html {height: 100%;}
     box-sizing: border-box;
     background-color: rgba(0,0,0,.1);
     cursor: pointer;
+    position:absolute;
+    bottom: 0;
+    left: 0;
 }
 .lnb_main {
     width: 100%;
     height: 85%;
     padding: 50px 0;
     box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
 }
 .main_list_mt>li {
     margin-bottom: 30px;
@@ -74,7 +79,7 @@ body, html {height: 100%;}
 
 .content {
     width: 85%;
-    height: 90%;
+    height: 100%;
 }
 .header {
     width: 100%;
@@ -86,21 +91,21 @@ body, html {height: 100%;}
     padding-left: 50px;
     box-sizing: border-box;
     font-weight: bold;
+    box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+    z-index: 1;
 }
 
 /* 체험한 테마 */
 .didtheme {
-    width: 95%;
+    width: 100%;
     height: 100%;
     box-sizing: border-box;
-    border-radius: 20px;
     margin: auto;
 }
 .didtheme .inner {
     width: 100%;
     height: 100%;
     background-color: #fff;
-    border-radius: 20px;
     padding: 30px;
     box-sizing: border-box;
     position: relative;
@@ -199,7 +204,7 @@ body, html {height: 100%;}
 	outline: 1px solid #aaa;
 	padding: 10px;
 	box-sizing: border-box;
-	margin-right: 15px;
+	margin-right: 10px;
 	border-radius: 10px;
 }
 .search_btn {
@@ -243,4 +248,44 @@ Form[name=subForm] input {
 }
 .indexAdmViewTbody tr {
 	height: 35px;
+}
+select[name=paging] {
+	width: 50px;
+	padding: 5px;
+	box-sizing: border-box;
+	outline: 1px solid #000;
+	margin-left: 20px;
+	border-radius: 10px;
+}
+.paging {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translatex(-50%)
+}
+.paging ul {
+	width: 120px;
+	height: 40px;
+	display: flex;
+	border: 2px solid #B1D0E0;
+	justify-content: center;
+	align-items: center;
+}
+.paging ul li {
+	width: 40px;
+	height: 40px;
+	font-size: 14px;
+}
+.paging ul li a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-align: center;
+	line-height: 40px;
+}
+.paging ul li:not(:last-child) a {
+	border-right: 1px solid #B1D0E0;
+}
+.paging ul li:hover {
+	background-color: #B1D0E0;
 }
