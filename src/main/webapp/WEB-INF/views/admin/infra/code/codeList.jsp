@@ -100,7 +100,7 @@
 								            <tr>
 								                <td><c:out value="${list.seq}"></c:out></td>
 								                <td><c:out value="${list.name}"></c:out></td>
-								                <td><a href="/codeGroupAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.theme}"></c:out></a></td>
+								                <td><a href="/codeAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.themeTitle}"></c:out></a></td>
 								                <td></td>
 								                <td></td>
 								                <td></td>
@@ -113,7 +113,7 @@
 								</c:choose>
 	                        </tbody>
 	                    </table>
-	                    <a href="/codeGroupAdmForm" class="btn add_btn">추가</a>
+	                    <a href="/codeAdmForm" class="btn add_btn">추가</a>
                     </form>
                     <div class="paging">
                     	<ul>
@@ -129,13 +129,13 @@
     <script src="/resources/js/escapeFinal.js"></script>
     <script>
     	$(".add_btn").on("click", function(){
-    		$("form[name=formList]").attr("action","/indexAdmView");
+    		$("form[name=formList]").attr("action","/codeAdmForm");
     		console.log("dd");
     	});
     	
     	$(".search_btn").on("click", function(){
     		// $("form[name=formList]").attr("method","get");
-    		$("form[name=formList]").attr("action","/codeGroupList").submit();
+    		$("form[name=formList]").attr("action","/codeList").submit();
     		console.log("dd")
     	});
     </script>

@@ -103,7 +103,7 @@
 	                        </tbody>
 	                    </table>
 	                    <div class="formBtn">
-		                    <button class="btn saveBtn" type="button">저장</button>
+		                    <button class="btn saveBtn" type="button">수정</button>
 		                    <button class="btn delBtn" type="button">삭제</button>
 		                    <button class="btn makeBtn" type="button">생성</button>
 		                </div>

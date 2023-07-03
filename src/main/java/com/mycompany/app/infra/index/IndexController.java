@@ -56,18 +56,18 @@ public class IndexController {
         System.out.println("dto.getTheme(): " + dto.getTheme());
 		
 		service.update(dto);
-        return "redirect:/indexAdmView";
+        return "redirect:/codeGroupList";
     }
 
     @RequestMapping("/codeGroupDelt")
     public String codeGroupDelt(CodeGroup dto){
         service.delete(dto);
-        return "redirect:/indexAdmView";
+        return "redirect:/codeGroupList";
     }
     @RequestMapping("/codeGroupNsrt")
     public String codeGroupNsrt(CodeGroup vo){
         service.insert(vo);
-        return "redirect:/indexAdmView";
+        return "redirect:/codeGroupList";
     }
 	
 	

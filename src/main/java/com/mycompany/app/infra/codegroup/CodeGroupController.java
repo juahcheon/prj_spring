@@ -3,6 +3,7 @@ package com.mycompany.app.infra.codegroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -18,9 +19,10 @@ public class CodeGroupController {
         System.out.println(vo.getShOption());
         System.out.println(vo.getShKeyword());
 
-
+//        vo.setShKeyword(vo.getShKeyword() == null ? "미진" : vo.getShKeyword());
         List<CodeGroup> list = service.selectList(vo);
         model.addAttribute("list", list);
+        // model.addAttribute("vo", vo);
 
 //        model.addAttribute("list", service.selectList());
 
@@ -49,8 +51,8 @@ public class CodeGroupController {
         return "redirect:/codeGroupList";
     }
     @RequestMapping("/codeGroupNsrt2")
-    public String codeGroupNsrt(CodeGroup vo){
-        service.insert(vo);
+    public String codeGroupNsrt(CodeGroup dto){
+        service.insert(dto);
         return "redirect:/codeGroupList";
     }
 }

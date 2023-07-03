@@ -43,7 +43,7 @@
                     <li>
                         <ul class="sub_list_mt">
                             <p>Main</p>
-                            <li><a href="/indexAdmView">DASHBOARD</a></li>
+                            <li><a href="#">DASHBOARD</a></li>
                             <li><a href="#">GENERAL</a></li>
                         </ul>
                     </li>
@@ -59,25 +59,20 @@
         </div>
 
         <div class="content">
-            <div class="header">THEME</div>
+            <div class="header">DASHBOARD</div>
             <div class="didtheme didtheme_full">
                 <div class="inner">
                     <div class="title_inner">
                         <div class="did_title">
                             <h4>등록 테마</h4>
                         </div>
+	                    <div>
+	                      	<input type="text" class="search_input" placeholder="검색어를 입력하세요." name="shKeyword">
+	                        <button type="button" class="search_btn">검색</button>
+	                    </div>
                     </div>
                     
-                    <form name="formList" action="" method="">
-	                    <div>
-	                      	<input type="text" class="search_input" placeholder="검색어를 입력하세요." name="shKeyword" value="<c:out value="${vo.shKeyword}"/>">
-	                        <button type="button" class="search_btn">검색</button>
-	                        <select name="paging" id="paging">
-						        <option value="10">10</option>
-						        <option value="20">20</option>
-						        <option value="30">30</option>
-						    </select>
-	                    </div>
+                    <form name="subForm" action="" method="">
 	                    <table class="did_theme_table">
 	                        <thead>
 	                            <tr>
@@ -92,52 +87,45 @@
 	                                <th scope="col">지역</th>
 	                            </tr>
 	                        </thead>
-	                        <tbody class="indexAdmViewTbody">
-	                            <c:choose>
-								    <c:when test="${fn:length(list) eq 0}"></c:when>
-								    <c:otherwise>
-								        <c:forEach items="${list}" var="list" varStatus="status">
-								            <tr>
-								                <td><c:out value="${list.seq}"></c:out></td>
-								                <td><c:out value="${list.name}"></c:out></td>
-								                <td><a href="/codeGroupAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.theme}"></c:out></a></td>
-								                <td></td>
-								                <td></td>
-								                <td></td>
-								                <td></td>
-								                <td></td>
-								                <td></td>
-								            </tr>
-								        </c:forEach>
-								    </c:otherwise>
-								</c:choose>
+	                        <tbody>
+	                            <tr>
+								  <td><input name="seq" id="seq" value="<c:out value="${param.seq}"/>" placeholder="자동생성"/></td>
+								  <td><input name="defaultNy" id="defaultNy" value="<c:out value="${item.defaultNy}"/>" placeholder="defaultNy"/></td>
+								  <td><input placeholder="name" name="name" id="name" value="<c:out value="${item.name}"/>"/></td>
+								  <td><input placeholder="themeTitle" name="themeTitle" id="themeTitle" value="<c:out value="${item.themeTitle}"/>"/></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								</tr>
+								        
 	                        </tbody>
 	                    </table>
-	                    <a href="/codeGroupAdmForm" class="btn add_btn">추가</a>
+	                    <div class="formBtn">
+		                    <button class="btn saveBtn" type="button">수정</button>
+		                    <button class="btn delBtn" type="button">삭제</button>
+		                    <button class="btn makeBtn" type="button">생성</button>
+		                </div>
                     </form>
-                    <div class="paging">
-                    	<ul>
-                    		<li><a href="#">1</a></li>
-                    		<li><a href="#">2</a></li>
-                    		<li><a href="#">3</a></li>
-                    	</ul>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="/resources/js/escapeFinal.js"></script>
     <script>
-    	$(".add_btn").on("click", function(){
-    		$("form[name=formList]").attr("action","/indexAdmView");
-    		console.log("dd");
-    	});
-    	
-    	$(".search_btn").on("click", function(){
-    		// $("form[name=formList]").attr("method","get");
-    		$("form[name=formList]").attr("action","/codeGroupList").submit();
-    		console.log("dd")
-    	});
+	    $(".saveBtn").on("click",function(){
+	        // 자기 자신을 호출할 때
+	        console.log("savehey");
+	        $("form[name=subForm]").attr("action","/codeUpdt2").submit();
+	    });
+	
+	    $(".delBtn").on("click",function(){
+	        $("form[name=subForm]").attr("action","/codeDelt2").submit();
+	    });
+	    $(".makeBtn").on("click",function(){
+	        $("form[name=subForm]").attr("action","/codeNsrt2").submit();
+	    });
     </script>
 
 </body>
