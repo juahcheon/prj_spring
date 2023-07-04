@@ -15,19 +15,32 @@ public class CodeGroupController {
     CodeGroupServiceImpl service;
 
     @RequestMapping("/codeGroupList")
-    public String codeGroupList( CodeGroupVo vo, Model model){
-        System.out.println(vo.getShOption());
-        System.out.println(vo.getShKeyword());
-
-//        vo.setShKeyword(vo.getShKeyword() == null ? "미진" : vo.getShKeyword());
-        List<CodeGroup> list = service.selectList(vo);
-        model.addAttribute("list", list);
-        // model.addAttribute("vo", vo);
-
-//        model.addAttribute("list", service.selectList());
-
-
+    public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model){
+        
+        vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
+        
+        vo.setParamsPaging(service.selectOneCount(vo));
+		
+		if(vo.getTotalRows() > 0) {
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
+        
         return "admin/infra/codegroup/codeGroupList";
+
+		/*
+		 * vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
+		 * List<CodeGroup> list = service.selectList(vo); model.addAttribute("list",
+		 * list);  model.addAttribute("vo", vo);
+		 * 
+		 *  model.addAttribute("list", service.selectList());
+		 * 
+		 * 
+		 * return "admin/infra/codegroup/codeGroupList";
+		 */
     }
 
     @RequestMapping("/codeGroupForm")

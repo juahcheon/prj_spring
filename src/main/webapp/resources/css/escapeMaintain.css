@@ -264,10 +264,10 @@ select[name=paging] {
 	transform: translatex(-50%)
 }
 .paging ul {
-	width: 120px;
+	/* width: 120px; */
 	height: 40px;
 	display: flex;
-	border: 2px solid #B1D0E0;
+	/* border: 2px solid #B1D0E0; */
 	justify-content: center;
 	align-items: center;
 }
@@ -282,11 +282,12 @@ select[name=paging] {
 	display: block;
 	text-align: center;
 	line-height: 40px;
+	color: #B1D0E0;
 }
 .paging ul li:not(:last-child) a {
 	border-right: 1px solid #B1D0E0;
 }
-.paging ul li:hover {
+.paging ul li a:hover {
 	background-color: #B1D0E0;
 	color: #fff;
 }

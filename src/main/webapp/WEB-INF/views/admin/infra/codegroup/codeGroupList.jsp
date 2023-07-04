@@ -15,6 +15,10 @@
     <!-- 폰트어썸 -->
     <script src="https://kit.fontawesome.com/08d3ec3c73.js" crossorigin="anonymous"></script>
     
+    <!-- BootStrap CDN -->
+<!--     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    
     <!-- 폰트(나눔스퀘어네오) -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <!-- 
@@ -69,6 +73,10 @@
                     </div>
                     
                     <form name="formList" action="" method="">
+                    
+	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+						<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+						
 	                    <div>
 	                      	<input type="text" class="search_input" placeholder="검색어를 입력하세요." name="shKeyword" value="<c:out value="${vo.shKeyword}"/>">
 	                        <button type="button" class="search_btn">검색</button>
@@ -78,6 +86,7 @@
 						        <option value="30">30</option>
 						    </select>
 	                    </div>
+	                    
 	                    <table class="did_theme_table">
 	                        <thead>
 	                            <tr>
@@ -116,11 +125,33 @@
 	                    <a href="/codeGroupAdmForm" class="btn add_btn">추가</a>
                     </form>
                     <div class="paging">
-                    	<ul>
+                    	<!-- <ul>
+                    		<li><a>&lt;</a></li>
                     		<li><a href="#">1</a></li>
                     		<li><a href="#">2</a></li>
                     		<li><a href="#">3</a></li>
-                    	</ul>
+                    	</ul> -->
+
+						<ul class="pagination justify-content-center mb-0">
+						               <li class="page-item"><a class="page-link" href="javascript:goList(${vo.thisPage-1})">&lt;</a></li>
+							<c:if test="${vo.startPage gt vo.pageNumToShow}">
+						                <%-- <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})">&lt;</a></li> --%>
+							</c:if>
+							<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+							<c:choose>
+								<c:when test="${i.index eq vo.thisPage}">
+						                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+								</c:when>
+								<c:otherwise>             
+						                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+								</c:otherwise>
+							</c:choose>
+							</c:forEach>                
+						<c:if test="${vo.endPage ne vo.totalPages}">                
+						              	<%-- <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})">&gt;</a></li> --%>
+						</c:if>
+						                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.thisPage+1})">&gt;</a></li>
+						</ul>
                     </div>
                 </div>
             </div>
@@ -138,6 +169,21 @@
     		$("form[name=formList]").attr("action","/codeGroupList").submit();
     		console.log("dd")
     	});
+    	
+    	goList = function(thisPage) {
+    		 if(thisPage == 0) {
+    		        $("input:hidden[name=thisPage]").val(1);
+    		        $("form[name=formList]").attr("action", "/codeGroupList").submit();
+    		    } else if(thisPage > ${vo.totalPages}){
+    		        $("input:hidden[name=thisPage]").val(thisPage - 1);
+    		        $("form[name=formList]").attr("action", "/codeGroupList").submit();
+    		    } else {
+    		        $("input:hidden[name=thisPage]").val(thisPage);
+    		        $("form[name=formList]").attr("action", "/codeGroupList").submit();
+    		    }
+    	}
+    	
+    	
     </script>
 
 </body>

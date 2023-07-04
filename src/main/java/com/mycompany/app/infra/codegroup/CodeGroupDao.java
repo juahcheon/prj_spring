@@ -26,11 +26,12 @@ public class CodeGroupDao{
 //    public List<CodeGroup> selectOne(CodeGroupVo vo){
 //        return sqlSession.selectOne(namespace+".selectOne",vo);
 //    }
-
+    public int selectOneCount(CodeGroupVo vo){ return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
+    
     public CodeGroup selectOne(CodeGroupVo vo){
-        CodeGroup codeGroup = sqlSession.selectOne(namespace+".selectOne",vo);
-        return codeGroup;
-//        return sqlSession.selectOne(namespace+".selectList",vo);
+//        CodeGroup codeGroup = sqlSession.selectOne(namespace+".selectOne",vo);
+//        return codeGroup;
+        return sqlSession.selectOne(namespace+".selectList",vo);
     }
 
     public int update(CodeGroup dto){ return sqlSession.update(namespace + ".update",dto);

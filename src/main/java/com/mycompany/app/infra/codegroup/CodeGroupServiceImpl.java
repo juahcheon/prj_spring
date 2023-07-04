@@ -28,4 +28,13 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 
     @Override
     public int insert(CodeGroup vo) {return dao.insert(vo);}
+
+	@Override
+	public int selectOneCount(CodeGroupVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
+
+	
+	
 }

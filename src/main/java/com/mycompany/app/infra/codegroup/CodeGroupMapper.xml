@@ -19,24 +19,36 @@
 		, name
 		, theme
 	</sql>
+	
+	<sql id ="selectCommon">
+   		FROM    
+	    	codeGroup
+		WHERE 1=1
+			<if test="shKeyword != null and !shKeyword.equals('')">AND name LIKE CONCAT('%',#{shKeyword},'%')</if>
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="selectCommon" />
+	</select>
 
     <select id="selectList" resultMap ="resultMapObj">
-        SELECT
-            <!-- <include refid="abc" /> --> *
-        FROM
-            codeGroup
-        WHERE 1=1
-        	<if test="shKeyword != null and !shKeyword.equals('')"> AND name LIKE CONCAT('%', #{shKeyword} ,'%')</if>
+        SELECT aa.* FROM (
+        	SELECT
+        		<include refid="abc" />
+	   			<include refid="selectCommon" />
+        ) aa
+        LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
     </select>
 
-    <select id="selectOne" resultMap ="resultMapObj">
+	<select id="selectOne" resultMap ="resultMapObj">
         SELECT
             *
         FROM
             codeGroup
         WHERE
             seq = #{seq}
-    </select>
+    </select> 
     
     <update id="update">
         UPDATE codeGroup
