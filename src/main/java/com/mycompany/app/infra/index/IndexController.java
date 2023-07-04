@@ -36,10 +36,8 @@ public class IndexController {
 	@RequestMapping("/indexAdmView")
 	public String indexAdmView(CodeGroupVo vo, Model model) {
 		
-		List<CodeGroup> list = service.selectList(vo);
-        model.addAttribute("list", list);
         
-		return "admin/infra/codegroup/indexAdmView";
+		return "admin/infra/index/indexAdmView";
 	}
 	
 	@RequestMapping("/codeGroupAdmForm")
