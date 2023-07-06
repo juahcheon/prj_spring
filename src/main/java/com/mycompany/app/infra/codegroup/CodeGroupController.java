@@ -20,6 +20,7 @@ public class CodeGroupController {
         vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
         
         vo.setParamsPaging(service.selectOneCount(vo));
+        
 		
 		if(vo.getTotalRows() > 0) {
 			List<CodeGroup> list = service.selectList(vo);
@@ -64,8 +65,8 @@ public class CodeGroupController {
         return "redirect:/codeGroupList";
     }
     @RequestMapping("/codeGroupNsrt2")
-    public String codeGroupNsrt(CodeGroup dto){
-        service.insert(dto);
+    public String codeGroupNsrt(CodeGroup vo){
+        service.insert(vo);
         return "redirect:/codeGroupList";
     }
 }

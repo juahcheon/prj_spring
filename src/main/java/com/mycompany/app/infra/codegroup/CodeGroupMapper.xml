@@ -71,9 +71,9 @@
             #{name}
             , #{theme}
         )
-        <selectKey resultType="String" keyProperty="seq" order="AFTER">
+        <!-- <selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
-		</selectKey>
+		</selectKey> -->
     </insert>
 
 </mapper>

@@ -81,10 +81,10 @@
 	                    <table class="did_theme_table">
 	                        <thead>
 	                            <tr>
-	                                <th scope="col" class="did_num">No.</th>
-	                                <th scope="col" class="did_date">등록 날짜</th>
-	                                <th scope="col" class="did_themetitle">제목</th>
-	                                <th scope="col" class="did_access">장르</th>
+	                                <th scope="col" class="did_num">seq</th>
+	                                <th scope="col" class="did_date">defaultNy</th>
+	                                <th scope="col" class="did_themetitle">code name</th>
+	                                <th scope="col" class="did_access">code number</th>
 	                                <th scope="col" class="did_hint">설명</th>
 	                                <th scope="col" class="did_comm">매장 난이도</th>
 	                                <th scope="col">코방 평점</th>
@@ -99,9 +99,9 @@
 								        <c:forEach items="${list}" var="list" varStatus="status">
 								            <tr>
 								                <td><c:out value="${list.seq}"></c:out></td>
+								                <td><c:out value="${list.defaultNy}"></c:out></td>
 								                <td><c:out value="${list.name}"></c:out></td>
 								                <td><a href="/codeAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.themeTitle}"></c:out></a></td>
-								                <td></td>
 								                <td></td>
 								                <td></td>
 								                <td></td>

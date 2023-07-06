@@ -117,14 +117,14 @@
 	    $(".saveBtn").on("click",function(){
 	        // 자기 자신을 호출할 때
 	        console.log("savehey");
-	        $("form[name=subForm]").attr("action","/codeGroupUpdt").submit();
+	        $("form[name=subForm]").attr("action","/codeGroupUpdt2").submit();
 	    });
 	
 	    $(".delBtn").on("click",function(){
-	        $("form[name=subForm]").attr("action","/codeGroupDelt").submit();
+	        $("form[name=subForm]").attr("action","/codeGroupDelt2").submit();
 	    });
 	    $(".makeBtn").on("click",function(){
-	        $("form[name=subForm]").attr("action","/codeGroupNsrt").submit();
+	        $("form[name=subForm]").attr("action","/codeGroupNsrt2").submit();
 	    });
     </script>
 
