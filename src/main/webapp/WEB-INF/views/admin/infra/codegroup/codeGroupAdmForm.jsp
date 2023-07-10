@@ -114,16 +114,44 @@
     </div>
     <script src="/resources/js/escapeFinal.js"></script>
     <script>
+    
+		validationInst = function(){
+			if(validation == false) return false;
+		}
+	
+		validationUpdt = function(){
+			/* if( $.trim($("#name").val()) == "" || $.trim($("#name").val()) == null) {
+				alert("데이터를 입력해주십시오.");
+				$("#name").focus();
+				return false;
+			} else {
+				// by pass
+			} */
+			
+			myRe = /^[a-z0-9_-]{2,10}$/;
+			if( myRe.test($.trim($("#name").val())) == false ) {
+				alert("공백없는 숫자와 대소문자만 입력 가능합니다.");
+				$("#name").focus();
+				return false;
+			} else {
+				// by pass
+			}
+		}
+    
 	    $(".saveBtn").on("click",function(){
 	        // 자기 자신을 호출할 때
 	        console.log("savehey");
+	        if (validationInst() == false) return false;
 	        $("form[name=subForm]").attr("action","/codeGroupUpdt2").submit();
 	    });
 	
 	    $(".delBtn").on("click",function(){
+	    	if (validationDelt() == false) return false;
 	        $("form[name=subForm]").attr("action","/codeGroupDelt2").submit();
 	    });
+	    
 	    $(".makeBtn").on("click",function(){
+	    	if (validationUpdt() == false) return false;
 	        $("form[name=subForm]").attr("action","/codeGroupNsrt2").submit();
 	    });
     </script>

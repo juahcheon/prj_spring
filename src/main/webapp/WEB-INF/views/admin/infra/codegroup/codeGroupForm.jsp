@@ -19,6 +19,20 @@
 
 <script src="/resources/js/jquery-3.7.0.slim.min.js"></script>
 <script type="text/javascript">
+
+
+	validationInst = function(){
+		if(validation == false) return false;
+	}
+
+	validationUpdt = function(){
+		
+		if($.trim( $("#name") == null || $("#name") == "" ) ) {
+			alert("데이터를 입력하세요.");
+		}
+		
+	}
+
     $("#saveBtn").on("click",function(){
         // 자기 자신을 호출할 때
         console.log("savehey");
@@ -29,6 +43,7 @@
         $("form[name=subForm]").attr("action","/codeGroupDelt").submit();
     });
     $("#makeBtn").on("click",function(){
+    	if (validationInst() == false) return false;
         $("form[name=subForm]").attr("action","/codeGroupNsrt").submit();
     });
 </script>
