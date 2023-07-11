@@ -137,6 +137,19 @@
 				// by pass
 			}
 		}
+		
+		check = function(obj) {
+			alert("asd");
+			alert(obj);
+			
+			if( myRe.test($.trim($("#name").val())) == false ) {
+				alert("공백없는 숫자와 대소문자만 입력 가능합니다.");
+				$("#name").focus();
+				return false;
+			} else {
+				// by pass
+			}
+		}
     
 	    $(".saveBtn").on("click",function(){
 	        // 자기 자신을 호출할 때
