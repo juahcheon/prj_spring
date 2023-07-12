@@ -50,7 +50,7 @@
                     <li>
                         <ul class="sub_list_mt">
                             <p>Tain</p>
-                            <li><a href="#">MEMBER</a></li>
+                            <li><a href="/memberList">MEMBER</a></li>
                             <li><a href="/codeGroupList">THEME</a></li>
                         </ul>
                     </li>
@@ -60,7 +60,7 @@
 
         <div class="content">
             <div class="header">DASHBOARD</div>
-            <div class="didtheme didtheme_full">
+            <div class="didtheme">
                 <div class="inner">
                     <div class="title_inner">
                         <div class="did_title">

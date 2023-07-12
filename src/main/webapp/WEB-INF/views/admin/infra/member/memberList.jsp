@@ -90,13 +90,13 @@
 	                    <table class="did_theme_table">
 	                        <thead>
 	                            <tr>
-	                                <th scope="col" class="did_num">No.</th>
-	                                <th scope="col" class="did_date">등록 날짜</th>
-	                                <th scope="col" class="did_themetitle">제목</th>
-	                                <th scope="col" class="did_access">장르</th>
-	                                <th scope="col" class="did_hint">설명</th>
-	                                <th scope="col" class="did_comm">매장 난이도</th>
-	                                <th scope="col">코방 평점</th>
+	                                <th scope="col" class="did_num">seq</th>
+	                                <th scope="col" class="did_date">ID</th>
+	                                <th scope="col" class="did_themetitle">PW</th>
+	                                <th scope="col" class="did_access">닉네임</th>
+	                                <th scope="col" class="did_hint">성별</th>
+	                                <th scope="col" class="did_comm">장르</th>
+	                                <th scope="col">지역</th>
 	                                <th scope="col">장소</th>
 	                                <th scope="col">지역</th>
 	                            </tr>
@@ -108,12 +108,12 @@
 								        <c:forEach items="${list}" var="list" varStatus="status">
 								            <tr>
 								                <td><c:out value="${list.seq}"></c:out></td>
-								                <td><c:out value="${list.name}"></c:out></td>
-								                <td><a href="/codeGroupAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.theme}"></c:out></a></td>
-								                <td></td>
-								                <td></td>
-								                <td></td>
-								                <td></td>
+								                <td><a href="/memberAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.ID}"></c:out></a></td>
+								                <td><c:out value="${list.PW}"></c:out></td>
+								                <td><c:out value="${list.nickName}"></c:out></td>
+								                <td><c:out value="${list.gender}"></c:out></td>
+								                <td><c:out value="${list.genre}"></c:out></td>
+								                <td><c:out value="${list.local}"></c:out></td>
 								                <td></td>
 								                <td></td>
 								            </tr>
@@ -122,7 +122,7 @@
 								</c:choose>
 	                        </tbody>
 	                    </table>
-	                    <a href="/codeGroupAdmForm" class="btn add_btn">추가</a>
+	                    <a href="/memberAdmForm" class="btn add_btn">추가</a>
                     </form>
                     <div class="paging">
                     	<!-- <ul>
@@ -159,27 +159,24 @@
     </div>
     <script src="/resources/js/escapeFinal.js"></script>
     <script>
-    	$(".add_btn").on("click", function(){
-    		$("form[name=formList]").attr("action","/indexAdmView");
-    		console.log("dd");
-    	});
+    	
     	
     	$(".search_btn").on("click", function(){
     		// $("form[name=formList]").attr("method","get");
-    		$("form[name=formList]").attr("action","/codeGroupList").submit();
+    		$("form[name=formList]").attr("action","/memberList").submit();
     		console.log("dd")
     	});
     	
     	goList = function(thisPage) {
     		 if(thisPage == 0) {
     		        $("input:hidden[name=thisPage]").val(1);
-    		        $("form[name=formList]").attr("action", "/codeGroupList").submit();
+    		        $("form[name=formList]").attr("action", "/memberList").submit();
     		    } else if(thisPage > ${vo.totalPages}){
     		        $("input:hidden[name=thisPage]").val(thisPage - 1);
-    		        $("form[name=formList]").attr("action", "/codeGroupList").submit();
+    		        $("form[name=formList]").attr("action", "/memberList").submit();
     		    } else {
     		        $("input:hidden[name=thisPage]").val(thisPage);
-    		        $("form[name=formList]").attr("action", "/codeGroupList").submit();
+    		        $("form[name=formList]").attr("action", "/memberList").submit();
     		    }
     	}
     	

@@ -1,11 +1,13 @@
 package com.mycompany.app.infra.index;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.app.infra.codegroup.CodeGroup;
 import com.mycompany.app.infra.codegroup.CodeGroupServiceImpl;
@@ -32,6 +34,27 @@ public class IndexController {
 	public String loginAdmForm() {
 		return "admin/infra/member/loginAdmForm";
 	}
+	
+//	@RequestMapping("/loginUsrForm")
+//	public String loginUsrForm() {
+//		return "usr/infra/member/loginUsrForm";
+//	}
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/loginProc") public Map<String, Object> loginProc(MemberVo
+	 * vo) { Map<String, Object> returnMap = new HashMap<String, Object>();
+	 * 
+	 * Member rtMember = service.selectOne(vo);
+	 * 
+	 * if(rtMember != null) { returnMap.put("rtMember", rtMember);
+	 * returnMap.put("rt", "success");
+	 * 
+	 * } else { returnMap.put("rt", "fail"); }
+	 * 
+	 * return returnMap; }
+	 */
 	
 	@RequestMapping("/indexAdmView")
 	public String indexAdmView(CodeGroupVo vo, Model model) {

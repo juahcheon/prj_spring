@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  전체 매퍼 중 유일한 값을 사용하여야 한다.
+ 해서 관계적으로 해당 파일의 path와 file_name(확장자 제외)
+ 그리고 dao 에서 namespace와 일치하여야 된다. -->
+
+<mapper namespace="com.mycompany.app.infra.member.MemberMapper">
+
+    <!--select 결과를 받을 객채-->
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.member.Member"></resultMap>
+
+	<sql id="abc">
+		seq
+		, ID
+		, PW
+		, nickName
+		, gender
+		, genre
+		, local
+	</sql>
+
+	<sql id ="selectCommon">
+   		FROM    
+	    	member
+		WHERE 1=1
+			<!-- <if test="shKeyword != null and !shKeyword.equals('')">AND ID LIKE CONCAT('%',#{shKeyword},'%')</if> -->
+	</sql>
+
+<!-- 	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="selectCommon" />
+	</select> -->
+
+    <select id="selectList" resultMap ="resultMapObj">
+        SELECT aa.* FROM (
+        	SELECT
+        		<include refid="abc" />
+	   			<include refid="selectCommon" />
+        ) aa
+        LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+    </select>
+
+	<select id="selectOne" resultMap ="resultMapObj">
+        SELECT
+            *
+        FROM
+            member
+        WHERE
+            seq = #{seq}
+    </select> 
+    
+        <update id="update">
+        UPDATE member
+        SET
+            ID = #{ID}
+            , PW = #{PW}
+            , nickName = #{nickName}
+            , gender = #{gender}
+            , genre = #{genre}
+            , local = #{local}
+        WHERE
+            seq = #{seq}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM member WHERE seq = #{seq}
+    </delete>
+
+    <insert id="insert">
+        INSERT INTO member (
+        	ID
+        	, PW
+			, nickName
+			, gender
+			, genre
+			, local
+			
+        ) VALUES (
+            #{ID}
+            , #{PW}
+            , #{nickName}
+            , #{gender}
+            , #{genre}
+            , #{local}
+        )
+    </insert>
+    
+</mapper>
