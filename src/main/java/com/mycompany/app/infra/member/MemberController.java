@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +20,11 @@ public class MemberController {
     MemberServiceImpl service;
 
     @RequestMapping("/memberList")
-    public String memberList(@ModelAttribute("vo") MemberVo vo, Model model){
+    public String codeGroupList(@ModelAttribute("vo") MemberVo vo, Model model){
         
-        vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
+		vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
         
-		/* vo.setParamsPaging(service.selectOneCount(vo)); */
+		vo.setParamsPaging(service.selectOneCount(vo));
         
 		
 		if(vo.getTotalRows() > 0) {
@@ -49,31 +51,58 @@ public class MemberController {
 
     @RequestMapping("/memberAdmForm")
     public String memberAdmForm(MemberVo vo, Model model){
-        Member member = service.selectOne(vo);
+        Member item = service.selectOne(vo);
 
-        model.addAttribute("item", member);
+        model.addAttribute("item", item);
 
         return "admin/infra/member/memberAdmForm";
     }
     
-	@RequestMapping("/loginUsrForm")
-	public String loginUsrForm() {
-		return "usr/infra/member/loginUsrForm";
-	}
+
 	
 	
 	@ResponseBody
-	@RequestMapping("/loginProc")
-	public Map<String, Object> loginProc(MemberVo vo) {
+	@RequestMapping("/indexUsrLoginViewAjax")
+	public Map<String, Object> indexUsrLoginView(MemberVo vo, HttpSession httpSession) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		Member rtMember = service.selectOne(vo);
+		Member rtMember = service.selectOneAjax(vo);
 		
 		if(rtMember != null) {
+			
+			httpSession.setMaxInactiveInterval(60*60);	// 60min
+			httpSession.setAttribute("sessionId", vo.getId());
+			
 			returnMap.put("rtMember", rtMember);
 			returnMap.put("rt", "success");
 		} else {
 			returnMap.put("rt", "fail");
+		}
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/logoutUsrProc")
+	public Map<String, Object> logoutUsrForm(HttpSession httpSession) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/checkIdProc")
+	public Map<String, Object> checkIdProc(MemberVo vo) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int rtNum = service.selectOneCheckId(vo);
+		
+		if(rtNum == 0) {
+			returnMap.put("rt", "available");
+		} else {
+			returnMap.put("rt", "unavailable");
 		}
 		
 		return returnMap;

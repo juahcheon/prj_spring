@@ -161,13 +161,11 @@
     <script>
     	$(".add_btn").on("click", function(){
     		$("form[name=formList]").attr("action","/indexAdmView");
-    		console.log("dd");
     	});
     	
     	$(".search_btn").on("click", function(){
     		// $("form[name=formList]").attr("method","get");
     		$("form[name=formList]").attr("action","/codeGroupList").submit();
-    		console.log("dd")
     	});
     	
     	goList = function(thisPage) {

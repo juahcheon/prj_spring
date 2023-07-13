@@ -90,8 +90,8 @@
 	                        <tbody>
 	                            <tr>
 								  <td><input name="seq" id="seq" value="<c:out value="${param.seq}"/>" placeholder="자동생성"/></td>
-								  <td><input placeholder="ID" name="ID" id="ID" value="<c:out value="${item.ID}"/>"/></td>
-								  <td><input placeholder="PW" name="PW" id="PW" value="<c:out value="${item.PW}"/>"/></td>
+								  <td><input placeholder="ID" name="ID" id="ID" value="<c:out value="${item.id}"/>"/></td>
+								  <td><input placeholder="PW" name="PW" id="PW" value="<c:out value="${item.password}"/>"/></td>
 								  <td><input placeholder="nickName" name="nickName" id="nickName" value="<c:out value="${item.nickName}"/>"/></td>
 								  <td><input placeholder="gender" name="gender" id="gender" value="<c:out value="${item.gender}"/>"/></td>
 								  <td><input placeholder="genre" name="genre" id="genre" value="<c:out value="${item.genre}"/>"/></td>

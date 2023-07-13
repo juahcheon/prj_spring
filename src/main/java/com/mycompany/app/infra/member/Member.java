@@ -6,8 +6,8 @@ public class Member {
 //	주로 테이블의 컬럼명과 일치
 
     private String seq;
-    private String ID;
-    private String PW;
+    private String id;
+    private String password;
     private String nickName;
     private String gender;
     private String genre;
@@ -19,17 +19,18 @@ public class Member {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public String getID() {
-		return ID;
+
+	public String getId() {
+		return id;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getPW() {
-		return PW;
+	public String getPassword() {
+		return password;
 	}
-	public void setPW(String pW) {
-		PW = pW;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getNickName() {
 		return nickName;

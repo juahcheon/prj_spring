@@ -63,7 +63,7 @@
         </div>
 
         <div class="content">
-            <div class="header">THEME</div>
+            <div class="header">MEMBER</div>
             <div class="didtheme">
                 <div class="inner">
                     <div class="title_inner">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     
-                    <form name="formList" action="" method="">
+                    <form name="formList" action="" method="post">
                     
 	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 						<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
@@ -103,13 +103,15 @@
 	                        </thead>
 	                        <tbody class="indexAdmViewTbody">
 	                            <c:choose>
-								    <c:when test="${fn:length(list) eq 0}"></c:when>
+								    <c:when test="${fn:length(list) eq 0}">
+								    	<td class="text-center" colspan="3">There is no data!</td>
+								    </c:when>
 								    <c:otherwise>
 								        <c:forEach items="${list}" var="list" varStatus="status">
 								            <tr>
 								                <td><c:out value="${list.seq}"></c:out></td>
-								                <td><a href="/memberAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.ID}"></c:out></a></td>
-								                <td><c:out value="${list.PW}"></c:out></td>
+								                <td><a href="/memberAdmForm?seq=<c:out value = '${list.seq}'/>"><c:out value="${list.id}"></c:out></a></td>
+								                <td><c:out value="${list.password}"></c:out></td>
 								                <td><c:out value="${list.nickName}"></c:out></td>
 								                <td><c:out value="${list.gender}"></c:out></td>
 								                <td><c:out value="${list.genre}"></c:out></td>
@@ -159,12 +161,13 @@
     </div>
     <script src="/resources/js/escapeFinal.js"></script>
     <script>
-    	
+		$(".add_btn").on("click", function(){
+			$("form[name=formList]").attr("action","/indexAdmView");
+		});
     	
     	$(".search_btn").on("click", function(){
     		// $("form[name=formList]").attr("method","get");
     		$("form[name=formList]").attr("action","/memberList").submit();
-    		console.log("dd")
     	});
     	
     	goList = function(thisPage) {

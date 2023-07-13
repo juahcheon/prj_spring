@@ -29,10 +29,18 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public int insert(Member vo) {return dao.insert(vo);}
 
-	/*
-	 * @Override public int selectOneCount(MemberVo vo) { // TODO Auto-generated
-	 * method stub return dao.selectOneCount(vo); }
-	 */
+	public int selectOneCheckId(MemberVo vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	public Member selectOneAjax(MemberVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneAjax(vo);
+	}
+
+	@Override public int selectOneCount(MemberVo vo) {  return dao.selectOneCount(vo); }
 
 	
 	

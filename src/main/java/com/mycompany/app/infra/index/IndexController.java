@@ -35,6 +35,21 @@ public class IndexController {
 		return "admin/infra/member/loginAdmForm";
 	}
 	
+	@RequestMapping("/loginUsrForm")
+	public String loginUsrForm() {
+		return "usr/infra/member/loginUsrForm";
+	}
+	
+	@RequestMapping("/signUpUsrForm")
+	public String signUpUsrForm() {
+		return "usr/infra/member/signUpUsrForm";
+	}
+	
+	@RequestMapping("/myUsrPage")
+	public String myUsrPage() {
+		return "usr/infra/member/myUsrPage";
+	}
+	
 //	@RequestMapping("/loginUsrForm")
 //	public String loginUsrForm() {
 //		return "usr/infra/member/loginUsrForm";

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -29,6 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+    <link rel="stylesheet" href="/resources/css/calender.css">
     <link rel="stylesheet" href="/resources/css/escapeFinal.css">
 
 </head>
@@ -140,7 +140,7 @@
     <div class="logIn_wrap">
         <div class="logIn_inner">
             <div class="inner">
-                <h3 class="UI_title">로그인</h3>
+                <h3 class="UI_title">회원가입</h3>
                 <div class="user_login_text">
                     <div class="UI_wrap user_ID">
                         <label class="user_label" for="ID">아이디</label>
@@ -153,47 +153,39 @@
                 </div>
             </div>
             <div class="login_btns">
-                <button type="button" class="login_btn">로그인</button>
-                <a href="/signUpUsrForm" class="join_btn">회원가입</a>
+                <button type="button" class="join_btn">회원가입</button>
             </div>
         </div>
     </div>
 
+    <script src="/resources/js/calender.js"></script>
     <script src="/resources/js/escapeFinal.js"></script>
     <script>
-    $(".login_btn").on("click", function(){
-		if( validation() == false ) return false;
-    	
-    	$.ajax({
-    		async: true 
-    		,cache: false
-    		,type: "post"
-    		/* ,dataType:"json" */
-    		,url: "/indexUsrLoginViewAjax"
-    		/* ,data : $("#formLogin").serialize() */
-    		,data : { 
-    			"id" : $("#ID").val(),
-    			"password" : $("#PW").val()
-    			}
-    		,success: function(response) {
-    			if(response.rt == "success") {
-    				location.href = "/";
-    			} else {
-    				alert("그런 회원 없습니다.");
-    			}
-    		}
-    		,error : function(jqXHR, textStatus, errorThrown){
-    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-    		}
-    	});
-    });
-
-    	
-    	
-    validation = function() {
-		// if(!checkNull($("#ifmmId"), $.trim($("#ifmmId").val()), "아이디를 입력해 주세요!")) return false;
-		// if(!checkNull($("#ifmmPassword"), $.trim($("#ifmmPassword").val()), "비밀번호를 입력해 주세요!")) return false;
-	}
+    	/* 회원가입 중복체크 */
+    	$(".join_btn").on("click", function(){
+			if( validation() == false ) return false;
+	    	
+	    	$.ajax({
+	    		async: true 
+	    		,cache: false
+	    		,type: "post"
+	    		,dataType:"json"
+	    		,url: "/checkIdProc"
+	    		,data : { 
+	    			"ID" : $("#ID").val()
+	    			}
+	    		,success: function(response) {
+	    			if(response.rt == "available") {
+	    				alert("사용 가능합니다.")
+	    			} else {
+	    				alert("다른 걸로 골라주세요.");
+	    			}
+	    		}
+	    		,error : function(jqXHR, textStatus, errorThrown){
+	    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	    		}
+	    	});
+	    });
     </script>
 </body>
 </html>

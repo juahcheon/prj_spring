@@ -14,8 +14,8 @@
 
 	<sql id="abc">
 		seq
-		, ID
-		, PW
+		, id
+		, password
 		, nickName
 		, gender
 		, genre
@@ -26,13 +26,31 @@
    		FROM    
 	    	member
 		WHERE 1=1
-			<!-- <if test="shKeyword != null and !shKeyword.equals('')">AND ID LIKE CONCAT('%',#{shKeyword},'%')</if> -->
+			<if test="shKeyword != null and !shKeyword.equals('')">AND ID LIKE CONCAT('%',#{shKeyword},'%')</if>
 	</sql>
 
-<!-- 	<select id="selectOneCount" resultType="Integer">
+ 	<select id="selectOneCount" resultType="Integer">
 		SELECT count(*)
 		<include refid="selectCommon" />
-	</select> -->
+	</select> 
+	
+	<select id="selectOne" resultMap="resultMapObj">
+	      SELECT
+	         <include refid="abc" />
+	      FROM
+	         member
+	      WHERE 1=1
+	         AND seq = #{seq}
+   </select>
+   
+   <select id="selectOneCheckId" resultType="Integer">
+   		SELECT
+   			COUNT(seq)
+   		FROM
+   			member
+   		WHERE 1=1
+   			AND id = #{id}
+   </select>
 
     <select id="selectList" resultMap ="resultMapObj">
         SELECT aa.* FROM (
@@ -42,21 +60,12 @@
         ) aa
         LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
     </select>
-
-	<select id="selectOne" resultMap ="resultMapObj">
-        SELECT
-            *
-        FROM
-            member
-        WHERE
-            seq = #{seq}
-    </select> 
     
         <update id="update">
         UPDATE member
         SET
-            ID = #{ID}
-            , PW = #{PW}
+            id = #{id}
+            , password = #{password}
             , nickName = #{nickName}
             , gender = #{gender}
             , genre = #{genre}
@@ -71,21 +80,32 @@
 
     <insert id="insert">
         INSERT INTO member (
-        	ID
-        	, PW
+        	id
+        	, password
 			, nickName
 			, gender
 			, genre
 			, local
 			
         ) VALUES (
-            #{ID}
-            , #{PW}
+            #{id}
+            , #{password}
             , #{nickName}
             , #{gender}
             , #{genre}
             , #{local}
         )
     </insert>
+    
+     <select id="selectOneAjax" resultMap="resultMapObj">
+      SELECT
+         id
+         , password
+      FROM
+         member
+      WHERE 1=1
+         AND id = #{id}
+         AND password = #{password}
+   </select>
     
 </mapper>

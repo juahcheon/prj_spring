@@ -3,38 +3,38 @@ package com.mycompany.app.infra.member;
 public class MemberVo {
 
     private String seq;
-    private String ID;
-    private String PW;
     private String nickName;
     private String gender;
     private String genre;
     private String local;
+    private String id;
+    private String password;
 
 
-    public String getSeq() {
-        return seq;
-    }
-
-    public void setSeq(String seq) {
-        this.seq = seq;
-    }
-    
-    
-    public String getID() {
-		return ID;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getPW() {
-		return PW;
+	public String getId() {
+		return id;
 	}
 
-	public void setPW(String pW) {
-		PW = pW;
+	public void setId(String id) {
+		this.id = id;
 	}
+
+	public String getSeq() {
+		return seq;
+	}
+
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+
 
 	public String getNickName() {
 		return nickName;
@@ -67,11 +67,6 @@ public class MemberVo {
 	public void setLocal(String local) {
 		this.local = local;
 	}
-
-
-
-
-
 
 	private String shKeyword;
 

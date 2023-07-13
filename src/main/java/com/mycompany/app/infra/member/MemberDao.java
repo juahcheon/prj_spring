@@ -26,16 +26,18 @@ public class MemberDao{
 //    public List<CodeGroup> selectOne(CodeGroupVo vo){
 //        return sqlSession.selectOne(namespace+".selectOne",vo);
 //    }
-	/*
-	 * public int selectOneCount(MemberVo vo){ return sqlSession.selectOne(namespace
-	 * + ".selectOneCount", vo); }
-	 */
+	
+	 public int selectOneCount(MemberVo vo){ return sqlSession.selectOne(namespace
+	  + ".selectOneCount", vo); }
+	 
     
     public Member selectOne(MemberVo vo){
 //        CodeGroup codeGroup = sqlSession.selectOne(namespace+".selectOne",vo);
 //        return codeGroup;
         return sqlSession.selectOne(namespace+".selectOne",vo);
     }
+    
+    public int selectCheckId(MemberVo vo) { return sqlSession.selectOne(namespace+".selectOneCheckId",vo); };
 
     public int update(Member dto){ return sqlSession.update(namespace + ".update",dto);
 //        return sqlSession.selectOne(namespace+".selectList",vo);
@@ -45,6 +47,6 @@ public class MemberDao{
 
     public int insert(Member vo){ return sqlSession.insert(namespace + ".insert",vo);}
 
-
+    public Member selectOneAjax(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOneAjax", vo); }
 
 }
