@@ -64,5 +64,16 @@
             , #{themeTitle}
         )
     </insert>
+    
+    <select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+    	SELECT
+    		seq
+    		, name
+    		, gender
+    	FROM
+    		code
+    	WHERE 1=1
+    		<!-- AND defaultNy = 0 -->
+    </select>
 
 </mapper>

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -41,6 +43,10 @@ public class CodeDao{
 
     public int insert(Code vo){ return sqlSession.insert(namespace + ".insert",vo);}
 
+//    for cache
+    public List<Code> selectListCachedCodeArrayList() {
+    	return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null);
+    }
 
 
 }

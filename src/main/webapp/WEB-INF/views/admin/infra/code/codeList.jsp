@@ -4,6 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.mycompany.app.infra.code.CodeServiceImpl"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -112,6 +114,9 @@
 								    </c:otherwise>
 								</c:choose>
 	                        </tbody>
+	                        
+	                        <c:set var="ListCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
+	                        
 	                    </table>
 	                    <a href="/codeAdmForm" class="btn add_btn">추가</a>
                     </form>
